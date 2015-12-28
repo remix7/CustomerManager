@@ -5,7 +5,7 @@ import java.util.List;
 //界面上所有与分页有关的
 public class Page {
 	private List records;
-	private int pagesize = 3;//每页显示的条数
+	private int pagesize = 10;//每页显示的条数
 	private int pagenum;//当前页码
 	private int totalpage;//总页数
 	private int startIndex;//每页开始的记录
@@ -13,7 +13,8 @@ public class Page {
 	//显示页码
 	private int startpage;
 	private int endpage;
-	
+	//查询时使用到的URL
+	private String servletUrl;	
 	
 	public Page(int pagenum,int totalrecords){
 		this.pagenum = pagenum;
@@ -96,6 +97,18 @@ public class Page {
 	}
 	public void setTotalrecords(int totalrecords) {
 		this.totalrecords = totalrecords;
+	}
+
+
+
+	public String getServletUrl() {
+		return servletUrl;
+	}
+
+
+
+	public void setServletUrl(String servletUrl) {
+		this.servletUrl = servletUrl;
 	}
 	
 }
