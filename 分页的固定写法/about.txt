@@ -1,0 +1,27 @@
+分页的固定写法：
+DAO层改造：
+	/**
+	 * 查询记录的总条数
+	 */
+	int getTotalRecords();
+	/**
+	 * 查询分页数据
+	 * @param startIndex 每页开始记录的索引编号
+	 * @param pagesize 每页显示的记录条数
+	 * @return
+	 */
+	List<Customer> findPageRecords(int startIndex,int pagesize);
+
+Service改造：
+	/**
+	 * 根据用户要看的页码返回封装了分页有关数据的Page对象
+	 */
+	Page findPageReocrds(String pagenum);
+
+Servlet改造：
+		String pagenum = request.getParameter("pagenum");//用户要看的页码
+		Page page = s.findPageReocrds(pagenum);
+		page.setServletUrl("/servlet/ShowAllCustomersServlet");
+		request.setAttribute("page", page);
+		request.getRequestDispatcher("/listCustomers.jsp").forward(request, response);
+接下来就是对jsp的改造了  一定要熟知域对象和el表达式
